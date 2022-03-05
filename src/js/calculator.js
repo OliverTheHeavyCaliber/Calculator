@@ -1,24 +1,18 @@
 "use strict";
 
 function calculator() {
-  // state
-  let result = "0", // result should always be treated as a string
-    input = "0", // input should always be treated as a string
+  let result = "0",
+    input = "0",
     memory = 0,
     operator = null,
-    finished = false; // had to add this because the natural behavior of
-  // a calculator is inconsistent when "=" has been pressed
-  // in that moment, pressing any more digits or decimal
-  // point should clear the result and start over
-  // in all other cases
+    finished = false;
 
   const result_element = document.querySelector(".calc__result");
   const input_element = document.querySelector(".calc__input-number");
   const operator_element = document.querySelector(".calc__operator");
 
   const setResult = (value) => {
-    result = String(value); // not converting to number
-    // to preserve decimal point at the end
+    result = String(value);
     result_element.textContent = result.substr(0, 10);
   };
 
@@ -27,8 +21,7 @@ function calculator() {
   };
 
   const setInput = (value) => {
-    input = String(value); // not converting to number
-    // to preserve decimal point at the end
+    input = String(value);
     input_element.textContent = value;
   };
 
@@ -95,7 +88,6 @@ function calculator() {
   };
 
   const highlightOperator = (name) => {
-    // would be better with arrays & loops:
     document.getElementById("btn-plus").classList.remove("calc__btn--active");
     document.getElementById("btn-minus").classList.remove("calc__btn--active");
     document
@@ -114,8 +106,8 @@ function calculator() {
   };
 
   const calculate = () => {
-    const input_number = Number(input); // NOW we convert the input to number
-    const result_number = Number(result); // NOW we convert the input to number
+    const input_number = Number(input);
+    const result_number = Number(result);
     switch (operator) {
       case "plus":
         setResult(result_number + input_number);
